@@ -22,11 +22,17 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            versionNameSuffix = "-prod"
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+
+        debug {
+            isMinifyEnabled = false
+            versionNameSuffix = "-dbg"
         }
     }
     compileOptions {
@@ -39,6 +45,10 @@ android {
     buildFeatures {
         compose = true
         buildConfig = true
+    }
+
+    ksp {
+        arg("room.schemaLocation", "$projectDir/schemas") // Path for schema files
     }
 }
 
