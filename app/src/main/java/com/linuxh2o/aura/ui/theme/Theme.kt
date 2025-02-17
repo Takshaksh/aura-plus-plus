@@ -2,12 +2,15 @@ package com.linuxh2o.aura.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
@@ -16,8 +19,8 @@ private val DarkColorScheme = darkColorScheme(
     tertiary = PrimaryColor,
 
     background = SecondaryColor,
-    onPrimary = TextPrimaryColor,
-    onSecondary = TextSecondaryColor
+    onPrimary = PrimaryColor,
+    onSecondary = SecondaryColor
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -26,8 +29,8 @@ private val LightColorScheme = lightColorScheme(
     tertiary = PrimaryColor,
 
     background = SecondaryColor,
-    onPrimary = TextPrimaryColor,
-    onSecondary = TextSecondaryColor
+    onPrimary = PrimaryColor,
+    onSecondary = SecondaryColor
 
 
 
@@ -65,3 +68,10 @@ fun AuraTheme(
         content = content
     )
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun getTopAppBArColor() = TopAppBarDefaults.topAppBarColors(
+    containerColor = BgSecondaryColor,
+    //titleContentColor = SecondaryColor
+)
